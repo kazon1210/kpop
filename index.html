@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>猜女團成員測驗</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<main id="app">
+  <section id="settingsPage" class="page active">
+    <div class="panel">
+      <h1>猜女團成員測驗</h1>
+      <p class="subtitle">成員照片由 Kpopping 自動取得</p>
+
+      <div class="setting-group">
+        <h2>遊戲人數</h2>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="playerMode" value="single" checked> 單人</label>
+          <label class="choice"><input type="radio" name="playerMode" value="multi"> 雙人對戰</label>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <h2>題目女團</h2>
+        <div id="groupList" class="group-list"></div>
+      </div>
+
+      <div class="setting-group">
+        <h2>遊戲類型</h2>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="quizType" value="name" checked> 看照片猜名字</label>
+          <label class="choice"><input type="radio" name="quizType" value="photo"> 看名字找照片</label>
+        </div>
+      </div>
+
+      <div class="setting-group">
+        <h2>題數</h2>
+        <div class="choice-row">
+          <label class="choice"><input type="radio" name="questionCount" value="12" checked> 12 題</label>
+          <label class="choice"><input type="radio" name="questionCount" value="18"> 18 題</label>
+        </div>
+      </div>
+
+      <label class="toggle-row">
+        <input id="penaltyEnabled" type="checkbox" checked>
+        答錯扣 1 分（最低 0 分）
+      </label>
+
+      <button id="startButton" class="primary-btn">開始遊戲</button>
+      <p id="loadStatus" class="status-text">開始遊戲後會自動載入 Kpopping 圖片</p>
+      <p class="source-note">
+        圖片來源為 Kpopping。題目內保留「圖片來源」連結；網站結構或圖片網址變更時，部分照片可能暫時無法顯示。
+      </p>
+    </div>
+  </section>
+
+  <section id="gamePage" class="page">
+    <header class="game-header">
+      <div>
+        <div id="progressText" class="progress-text"></div>
+        <div class="progress-track"><div id="progressBar" class="progress-bar"></div></div>
+      </div>
+      <div id="scoreText" class="score-text"></div>
+    </header>
+
+    <h2 id="questionTitle" class="question-title"></h2>
+    <section id="nameModeArea">
+      <div class="main-image-wrap">
+        <img id="mainImage" class="main-image" alt="題目圖片">
+        <a id="mainSource" class="image-source" target="_blank" rel="noopener">圖片來源</a>
+        <div id="answerStamp" class="answer-stamp"></div>
+      </div>
+      <div id="nameOptions" class="name-options"></div>
+    </section>
+
+    <section id="photoModeArea" class="hidden">
+      <div id="photoOptions" class="photo-grid"></div>
+    </section>
+
+    <div id="centerMessage" class="center-message hidden"></div>
+    <aside id="multiHelp" class="keyboard-help hidden">
+      玩家 1：Z / X / C / V　　玩家 2：/ / 1 / 2 / 3
+    </aside>
+  </section>
+
+  <section id="resultPage" class="page">
+    <div class="panel result-panel">
+      <div id="resultEmoji" class="result-emoji">🎉</div>
+      <h1 id="resultTitle">測驗完成</h1>
+      <p id="resultScore" class="result-score"></p>
+      <p id="resultComment" class="result-comment"></p>
+      <div class="result-actions">
+        <button id="homeButton" class="secondary-btn">返回主頁</button>
+        <button id="restartButton" class="primary-btn">再玩一次</button>
+      </div>
+    </div>
+  </section>
+</main>
+<script src="app.js"></script>
+</body>
+</html>
